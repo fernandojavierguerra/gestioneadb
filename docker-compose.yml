@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+ pg:
+  image: postgres:12
+  ports:
+   - "7432:5432"
+  container_name: pg
+  environment:
+    POSTGRES_USER       : postgres
+    POSTGRES_PASSWORD   : postgres
+
+ gestioneadb:
+  image: siudocker/php:7.4-web-v0.9.0
+  container_name: gestioneadb
+  ports:
+   - "7008:80"
+  environment:
+    DOCKER_NAME                       : gestioneadb
+    DOCKER_WEB_PORT                   : 7008
+    TOBA_PASS                         : toba
+    TOBA_BASE_PASS                    : postgres
+    TOBA_INSTALACION_DIR              : /var/local/docker-data/gestioneadb-instalacion
+    TOBA_BASE_HOST                    : pg
+    TOBA_BASE_NOMBRE                  : toba_gestioneadb
+    TOBA_PROYECTO                     : gestioneadb
+    TOBA_PROYECTO_DIR                 : /var/local/gestioneadb
+    TOBA_PROYECTO_ALIAS               : /gestioneadb
+    TOBA_PROYECTO_INSTALAR            : "True"
+    TOBA_INSTALAR_REFERENCIA          : "True"
+    TOBA_INSTALAR_USUARIOS            : "True"
+  links:
+   - pg
+  volumes:
+   - .:/var/local/gestioneadb
+   - ./instalacion:/var/local/docker-data/gestioneadb-instalacion
