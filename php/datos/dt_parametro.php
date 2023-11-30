@@ -25,9 +25,10 @@ class dt_parametro extends gestioneadb_datos_tabla
 		if (count($where)>0) {
 			$sql = sql_concatenar_where($sql, $where);
 		}
+		
+		$sql = toba::perfil_de_datos()->filtrar($sql);
 		return toba::db('gestioneadb')->consultar($sql);
 	}
 
 }
-
 ?>

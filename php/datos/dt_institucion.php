@@ -19,5 +19,6 @@ class dt_institucion extends gestioneadb_datos_tabla
 		return toba::db('gestioneadb')->consultar($sql);
 	}
 
+
 }
 ?>
