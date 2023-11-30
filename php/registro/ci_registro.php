@@ -5,7 +5,8 @@ class ci_registro extends gestioneadb_ci
 
 	function conf__cuadro(toba_ei_cuadro $cuadro)
 	{
-		$cuadro->set_datos($this->dep('datos')->tabla('registro')->get_listado());
+		//No se cargan datos para que deba registarse
+        //$cuadro->set_datos($this->dep('datos')->tabla('registro')->get_listado());
 	}
 
 	function evt__cuadro__seleccion($datos)
