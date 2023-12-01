@@ -23,6 +23,10 @@ class ci_registro extends gestioneadb_ci
 			$form->set_datos($this->dep('datos')->tabla('registro')->get());
 		} else {
 			$this->pantalla()->eliminar_evento('eliminar');
+            //Cargar con la fecha de hoy
+            $hoy = date("Y/m/d");
+            $form->set_datos_defecto(['fecha_registro' => $hoy]);
+
 		}
 	}
 
